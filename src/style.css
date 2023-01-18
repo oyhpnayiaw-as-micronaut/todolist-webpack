@@ -86,12 +86,14 @@ input:active {
 }
 
 .todo-item-group {
+  position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
   place-items: center;
   padding: 0 16px;
   gap: 10px;
   border-bottom: 1px solid #ccc;
+  overflow: hidden;
 }
 
 .todo-delete-completed-btn {
@@ -103,11 +105,6 @@ input:active {
 .todo-delete-completed-btn button {
   color: #c3c3c3;
   font-size: 16px;
-}
-
-.todo-item-group {
-  overflow: hidden;
-  position: relative;
 }
 
 .row,
@@ -155,8 +152,9 @@ input:active {
   position: absolute;
   right: -100%;
 
-  /** to make sure remove btn is still clickable 
-  * eventhough focus event is gone from .todo-input */
+  /* To make sure remove btn is still clickable
+  * eventhough focus event is gone from .todo-input
+  * see line:161 for how this is actually working */
   transition: right 1ms;
 }
 
