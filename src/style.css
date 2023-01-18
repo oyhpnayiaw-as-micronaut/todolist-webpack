@@ -1,0 +1,120 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f6f6f6;
+  padding: 16px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+form {
+  width: min(100%, 640px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  background-color: #fff;
+}
+
+input {
+  font-size: inherit;
+  padding: 0;
+  border: none;
+  color: #333;
+}
+
+input:focus,
+input:active {
+  outline: none;
+}
+
+.todo-list {
+  width: 100%;
+  height: 100%;
+}
+
+.todo-header {
+  font-weight: normal;
+  color: #333;
+}
+
+.todo-input-add::placeholder {
+  font-style: italic;
+}
+
+.todo-item-group {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  place-items: center;
+  padding: 0 16px;
+  gap: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-clear-button-container {
+  background-color: #f6f6f6;
+  display: grid;
+  place-items: center;
+}
+
+.todo-clear-button-container button {
+  color: #c3c3c3;
+  font-size: 16px;
+}
+
+.todo-header,
+.todo-item-group,
+.todo-input-add,
+.todo-clear-button-container {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.todo-checkbox:checked + .todo-input {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo-item-group:focus-within {
+  background-color: #fafac7;
+}
+
+.todo-remove-button {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+}
