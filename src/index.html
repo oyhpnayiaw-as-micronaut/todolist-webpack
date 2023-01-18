@@ -15,11 +15,19 @@
   </head>
   <body>
     <form>
-      <legend class="todo-header">Today's To Do</legend>
-      <input type="text" placeholder="Add a todo" class="todo-input-add" />
+      <div class="row">
+        <legend class="todo-header">Today's To Do</legend>
+        <i class="fa-solid fa-rotate"></i>
+      </div>
+      <div class="row">
+        <input type="text" placeholder="Add a todo" class="todo-create-input" />
+        <i class="fa-solid fa-turn-down"></i>
+      </div>
       <ul class="todo-list"></ul>
-      <div class="todo-clear-button-container">
-        <button type="submit">Clear all completed</button>
+      <div class="todo-delete-completed-btn">
+        <button type="submit" value="delete-completed">
+          Clear all completed
+        </button>
       </div>
     </form>
   </body>

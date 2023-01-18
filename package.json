@@ -4,6 +4,7 @@
   "description": "My todolist app using webpack",
   "main": "index.js",
   "scripts": {
+    "start": "webpack serve",
     "dev": "webpack serve",
     "linters": "hint . && stylelint \"**/*.css\" && eslint .",
     "build": "webpack --mode=production --node-env=production",
