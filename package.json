@@ -1,11 +1,15 @@
 {
-  "name": "html-css-js-template",
+  "name": "todolist-webpack",
   "version": "1.0.0",
-  "description": "HTML,CSS & JS template for Microverse. All linters and readme file included.",
-  "main": "index.html",
+  "description": "My todolist app using webpack",
+  "main": "index.js",
   "scripts": {
-    "linters": "yarn hint . && yarn run-stylelint && yarn eslint .",
-    "run-stylelint": "stylelint \"**/*.css\""
+    "dev": "webpack serve",
+    "linters": "hint . && stylelint \"**/*.css\" && eslint .",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
   },
   "keywords": [
     "Microverse"
@@ -13,14 +17,25 @@
   "author": "oyhpnayiaw@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@webpack-cli/generators": "^3.0.1",
     "babel-eslint": "10.x",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
     "eslint": "7.x",
     "eslint-config-airbnb-base": "14.x",
     "eslint-plugin-import": "2.x",
     "hint": "7.x",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.3",
+    "style-loader": "^3.3.1",
     "stylelint": "13.x",
     "stylelint-config-standard": "21.x",
     "stylelint-csstree-validator": "1.x",
-    "stylelint-scss": "3.x"
+    "stylelint-scss": "3.x",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   }
 }
