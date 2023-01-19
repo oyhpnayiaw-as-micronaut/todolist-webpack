@@ -4,32 +4,20 @@ import './style.css';
 
 // Get todo-list element
 const todoListEl = document.querySelector('.todo-list');
+const todoCreateInput = document.querySelector('.todo-create-input');
 
 const todo = new TODO(todoListEl);
 
-// Get todo create input
-const todoCreateEl = document.querySelector('.todo-create-input');
-
 // Add event listener to todo create input
 // When user press enter, create a new task
-todoCreateEl.addEventListener('keyup', (e) => {
+todoCreateInput.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
     todo.addTask(e.target.value);
     e.target.value = '';
   }
 });
 
-// Get todo delete completed button
 const todoForm = document.querySelector('form');
-
-// -----------------//
-// Handle todo item //
-// -----------------//
-
-// Prevent the Enter key from submitting form
-todoForm.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') e.preventDefault();
-});
 
 // Listen for Task checkbox events
 todoForm.addEventListener('change', (e) => {
@@ -51,7 +39,16 @@ todoForm.addEventListener('keyup', (e) => {
   }
 });
 
-// Add listener for submit buttons
+// Prevent the Enter key from submitting form
+// This is important because we want to use the Enter key to create a new task
+// If we don't prevent the default behavior, the form will be submitted
+// and then delete/remove button will trigger the form submit event
+// see submit event listener below for more details
+todoForm.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') e.preventDefault();
+});
+
+// Add listener for task delete/remove buttons
 todoForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const { value } = e.submitter;
