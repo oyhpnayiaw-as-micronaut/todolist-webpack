@@ -30,7 +30,7 @@ class TODO {
 
   /**
    * Update description of a task
-   * @param {number} index - primary key of the task
+   * @param {string | number} index - primary key of the task
    * @param {string} desc - new description of the task
    * */
   updateTaskDesc = (index, desc) => {
@@ -40,7 +40,7 @@ class TODO {
 
   /**
    * Update completed status of a task
-   * @param {number} index - primary key of the task
+   * @param {string | number} index - primary key of the task
    * */
   updateTaskStatus = (index) => {
     const task = this.#getTask(index);
@@ -50,7 +50,7 @@ class TODO {
 
   /**
    * Delete a task
-   * @param {number} index - primary key of the task
+   * @param {string | number} index - primary key of the task
    * */
   deleteTask = (index) => {
     // this.#tasks.splice(index - 1, 1);
@@ -70,7 +70,7 @@ class TODO {
    * Get todo task according to the index key
    * Tip: index is like the primary key of the task
    * Not to be confused with the index of the task in the array
-   * @param {number} index - primary key of the task
+   * @param {string | number} index - primary key of the task
    * */
   #getTask = (index) => this.#tasks.find((e) => e.index === Number(index));
 
@@ -101,7 +101,7 @@ class TODO {
   /**
    * Create html element for a task
    * @param {Task} task
-   * @returns {HTMLElement} html element for the task
+   * @returns {string} html string
    * */
   #createTaskEl = (task) => {
     const { index, description, completed } = task;
