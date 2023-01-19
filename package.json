@@ -10,7 +10,13 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "remove:gh-pages": "git push origin :gh-pages",
+    "checkout:temp": "git branch -f temp && git branch -D temp && git checkout -b temp",
+    "add:dist": "git add dist -f && git commit -m 'Add dist'",
+    "push:gh-pages": "git subtree push --prefix dist origin gh-pages",
+    "deploy:first": "npm run checkout:temp && npm run build && npm run add:dist && npm run push:gh-pages",
+    "deploy": "npm run remove:gh-pages && npm run deploy:first"
   },
   "keywords": [
     "Microverse"
