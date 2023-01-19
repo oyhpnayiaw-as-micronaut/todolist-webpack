@@ -14,7 +14,7 @@ ul {
 
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f6f6f6;
   padding: 16px;
 }
@@ -36,11 +36,17 @@ form {
   background-color: #fff;
 }
 
+i {
+  width: 20px;
+  color: #cdcdcd;
+}
+
 input {
   font-size: inherit;
   padding: 0;
   border: none;
   color: #333;
+  width: 100%;
 }
 
 input:focus,
@@ -53,39 +59,57 @@ input:active {
   height: 100%;
 }
 
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row i {
+  width: 20px;
+  text-align: center;
+}
+
+.fa-turn-down {
+  font-size: 8px;
+  transform: rotate(90deg);
+}
+
 .todo-header {
   font-weight: normal;
   color: #333;
 }
 
-.todo-input-add::placeholder {
+.todo-create-input::placeholder {
   font-style: italic;
 }
 
 .todo-item-group {
+  position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
   place-items: center;
   padding: 0 16px;
   gap: 10px;
   border-bottom: 1px solid #ccc;
+  overflow: hidden;
 }
 
-.todo-clear-button-container {
+.todo-delete-completed-btn {
   background-color: #f6f6f6;
   display: grid;
   place-items: center;
 }
 
-.todo-clear-button-container button {
+.todo-delete-completed-btn button {
   color: #c3c3c3;
   font-size: 16px;
 }
 
-.todo-header,
+.row,
 .todo-item-group,
-.todo-input-add,
-.todo-clear-button-container {
+.todo-delete-completed-btn {
   width: 100%;
   height: 50px;
   border-bottom: 1px solid #ccc;
@@ -113,8 +137,32 @@ input:active {
   background-color: #fafac7;
 }
 
-.todo-remove-button {
-  width: 20px;
+.todo-menu-icon {
+  display: block;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.todo-input:focus + .todo-menu-icon {
+  display: none;
+}
+
+.todo-remove-btn {
+  position: absolute;
+  right: -100%;
+
+  /* To make sure remove btn is still clickable
+  * eventhough focus event is gone from .todo-input
+  * see line:161 for how this is actually working */
+  transition: right 1ms;
+}
+
+.todo-input:focus ~ .todo-remove-btn {
+  right: 16px;
+}
+
+.todo-task-btn {
   height: 20px;
-  font-size: 12px;
+  font-size: 14px;
 }
