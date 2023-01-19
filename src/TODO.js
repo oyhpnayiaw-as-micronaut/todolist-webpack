@@ -23,37 +23,38 @@ class TODO {
   addTask = (description) => {
     if (!description) return;
 
-    const task = { index: this.#tasks.length, description, completed: false };
+    const task = { description, completed: false };
     this.#tasks.push(task);
     this.#render();
   };
 
   /**
    * Update description of a task
-   * @param {number} index
+   * @param {number} index - primary key of the task
    * @param {string} desc - new description of the task
    * */
   updateTaskDesc = (index, desc) => {
-    this.#tasks[index].description = desc;
+    this.#getTask(index).description = desc;
     this.#save();
   };
 
   /**
    * Update completed status of a task
-   * @param {number} index
+   * @param {number} index - primary key of the task
    * */
   updateTaskStatus = (index) => {
-    const { completed } = this.#tasks[index];
-    this.#tasks[index].completed = !completed;
+    const task = this.#getTask(index);
+    task.completed = !task.completed;
     this.#save();
   };
 
   /**
    * Delete a task
-   * @param {number} index
+   * @param {number} index - primary key of the task
    * */
   deleteTask = (index) => {
-    this.#tasks.splice(index, 1);
+    // this.#tasks.splice(index - 1, 1);
+    this.#tasks = this.#tasks.filter((task) => task.index !== Number(index));
     this.#render();
   };
 
@@ -65,10 +66,18 @@ class TODO {
     this.#render();
   };
 
+  /**
+   * Get todo task according to the index key
+   * Tip: index is like the primary key of the task
+   * Not to be confused with the index of the task in the array
+   * @param {number} index - primary key of the task
+   * */
+  #getTask = (index) => this.#tasks.find((e) => e.index === Number(index));
+
   /** Reset the index state of all tasks */
   #resetIndex = () => {
     this.#tasks.forEach((task, index) => {
-      task.index = index;
+      task.index = index + 1;
     });
   };
 
