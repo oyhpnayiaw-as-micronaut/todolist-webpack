@@ -102,7 +102,23 @@ npm run linters
 
 ### Deployment
 
-Upload the dist folder into your server.
+#### Deploy to gh-pages
+
+- If you want to deploy using gh-pages for the first time. i.e If there is no `gh-pages` branch in you github repo run the following command.
+
+```sh
+npm run deploy:first
+```
+
+- If you already deploy using previous step or you already have `gh-pages` branch run this command.
+
+```sh
+npm run deploy
+```
+
+#### Deploy to own server
+
+Run `npm run build` and then upload the `dist` folder into your server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
