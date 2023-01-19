@@ -154,7 +154,7 @@ input:active {
 
   /* To make sure remove btn is still clickable
   * even though focus event is gone from .todo-input
-  * see .todo-input:focus + .todo-menu-icon for more info 
+  * see .todo-input:focus + .todo-menu-icon for more info
   * Q&A Why not using display: none; instead of position: absolute;?
   * A: Because display: none; will make the element not clickable even though it's still in the DOM
   * */
