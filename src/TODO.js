@@ -1,18 +1,25 @@
 /** @typedef {{ index: number, description: string, completed: boolean }} Task */
 
 class TODO {
+  #storageKey = 'tasks';
+
   /** @type {Task[]} */
   #tasks;
 
   /** @type {HTMLElement} todoListElement */
   #todoListEl;
 
+  /** @type {Storage} */
+  #storage;
+
   /**
    * @param {HTMLElement} todoListEl
+   * @param {Storage} storage
    * */
-  constructor(todoListEl) {
+  constructor(todoListEl, storage) {
     this.#todoListEl = todoListEl;
-    this.#tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    this.#storage = storage;
+    this.#tasks = JSON.parse(this.#storage.getItem(this.#storageKey)) || [];
     this.#render();
   }
 
@@ -71,6 +78,7 @@ class TODO {
    * Tip: index is like the primary key of the task
    * Not to be confused with the index of the task in the array
    * @param {string | number} index - primary key of the task
+   * @returns {Task} task
    * */
   #getTask = (index) => this.#tasks.find((e) => e.index === Number(index));
 
@@ -81,16 +89,16 @@ class TODO {
     });
   };
 
-  /** Save tasks to localStorage */
+  /** Save tasks to Storage */
   #save = () => {
-    localStorage.setItem('tasks', JSON.stringify(this.#tasks));
+    this.#storage.setItem(this.#storageKey, JSON.stringify(this.#tasks));
   };
 
   /** Render all tasks into todo list element */
   #render() {
     this.#resetIndex();
 
-    // reset element to make sure element is empty
+    // reset innerHTML to make sure todo-list element is empty
     this.#todoListEl.innerHTML = '';
     const todoItems = this.#tasks.map(this.#createTaskEl).join('');
     this.#todoListEl.innerHTML = todoItems;
