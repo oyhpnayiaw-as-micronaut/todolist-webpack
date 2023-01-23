@@ -1,11 +1,11 @@
-import TODO from './TODO.js';
+import TODOWithDOM from './TODOWithDOM.js';
 
 import './style.css';
 
 const todoListEl = document.querySelector('.todo-list');
 const todoCreateInput = document.querySelector('.todo-create-input');
 
-const todo = new TODO(todoListEl, localStorage);
+const todo = new TODOWithDOM(todoListEl, localStorage);
 
 // Add event listener to todo create input
 // When user press enter, create a new task
