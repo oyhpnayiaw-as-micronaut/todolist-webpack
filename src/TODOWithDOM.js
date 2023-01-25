@@ -1,6 +1,6 @@
-import TODO from './TODO.js';
+const TODO = require('./TODO.js');
 
-export default class TODOWithDOM extends TODO {
+module.exports = class TODOWithDOM extends TODO {
   /**
    * @private
    * @type {HTMLElement} todoListElement
@@ -16,7 +16,7 @@ export default class TODOWithDOM extends TODO {
     super(storage, storageKey);
 
     this.#todoListEl = todoListEl;
-    this.#render();
+    this.render();
   }
 
   /**
@@ -26,7 +26,7 @@ export default class TODOWithDOM extends TODO {
    * */
   addTask(description) {
     super.addTask(description);
-    this.#render();
+    this.render();
   }
 
   /**
@@ -36,7 +36,7 @@ export default class TODOWithDOM extends TODO {
    * */
   deleteTask(index) {
     super.deleteTask(index);
-    this.#render();
+    this.render();
   }
 
   /**
@@ -45,14 +45,14 @@ export default class TODOWithDOM extends TODO {
    * */
   deleteCompletedTasks() {
     super.deleteCompletedTasks();
-    this.#render();
+    this.render();
   }
 
   /**
    * @private
    * Render the list of tasks to the DOM
    */
-  #render() {
+  render() {
     this.#todoListEl.innerHTML = '';
     const todoItems = this.tasks.map(this.#createTaskEl).join('');
     this.#todoListEl.innerHTML = todoItems;
@@ -86,4 +86,4 @@ export default class TODOWithDOM extends TODO {
     </ul>
   `;
   };
-}
+};
