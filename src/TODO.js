@@ -1,7 +1,7 @@
 /** @typedef {{ index: number, description: string, completed: boolean }} Task */
 
 /** CRUD operations for TODO tasks */
-export default class TODO {
+module.exports = class TODO {
   /**
    * @private
    * @type {string}
@@ -14,10 +14,7 @@ export default class TODO {
    * */
   #storage;
 
-  /**
-   * @protected
-   * @type {Task[]}
-   * */
+  /** @type {Task[]} */
   tasks;
 
   /**
@@ -110,4 +107,4 @@ export default class TODO {
   #save = () => {
     this.#storage.setItem(this.#storageKey, JSON.stringify(this.tasks));
   };
-}
+};
